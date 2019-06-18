@@ -1,0 +1,29 @@
+{
+  "name": "mlb-server",
+  "version": "1.0.0",
+  "description": "Server for MLB API",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "tsc && node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pawptart/mlb-server.git"
+  },
+  "author": "Tyler Porter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pawptart/mlb-server/issues"
+  },
+  "homepage": "https://github.com/pawptart/mlb-server#readme",
+  "dependencies": {
+    "@types/node": "^12.0.8",
+    "express": "^4.17.1",
+    "mongodb": "^3.2.7",
+    "typescript": "^3.5.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "@types/mongodb": "^3.1.28"
+  }
+}
