@@ -23,6 +23,12 @@ import { mongoConnect } from './mongo-connect';
 				mongoDb
 					.collection('games')
 					.find({})
+					.toArray((err: any, data: any) => {
+						if (err) {
+							throw err;
+						}
+						resolve(data);
+					});
 			});
 		}
 
@@ -49,9 +55,9 @@ import { mongoConnect } from './mongo-connect';
 	}
 
 	// API endpoints for games
-	app.get('/api/games/:day/:month/:year', getGames);
+	app.get('/api/games/', getGames);
 
 	app.listen(port, function () {
-		console.log(`Server started, listening on ${port}.`);
+		console.log(`Server started, listening on port ${port}.`);		
 	});
-});
+})();
