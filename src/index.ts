@@ -71,7 +71,7 @@ import bodyParser from 'body-parser';
 	}
 
 	// API endpoints for games
-	app.get('/api/games/:day/:month/:year', getGames);
+	app.get('/api/games/:month/:day/:year', getGames);
 
 	app.listen(port, function () {
 		console.log(`Server started, listening on port ${port}.`);		
