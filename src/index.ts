@@ -1,5 +1,6 @@
 import express = require('express');
 import { mongoConnect } from './mongo-connect';
+import bodyParser from 'body-parser';
 
 (async () => {
 	// Express app config
@@ -15,20 +16,35 @@ import { mongoConnect } from './mongo-connect';
 		next();
 	});
 
+	// Configure body-parser
+	app.use(bodyParser.urlencoded({ extended: false }));
+	app.use(bodyParser.json());
+
 	let getGames = async (req: any, res: any) => {
+		let day = +req.params.day;
+		let month = +req.params.month;
+		let year = +req.params.year;
 		const { mongoDb, mongoClient } = await mongoConnect(mongoUrl, 'game');
 
 		let gamePromise = () => {
 			return new Promise((resolve, reject) => {
+
 				mongoDb
 					.collection('games')
-					.find({})
-					.toArray((err: any, data: any) => {
-						if (err) {
-							throw err;
-						}
-						resolve(data);
-					});
+					.findOne(
+						{ 
+							"date": {
+								"year": year,
+								"month": month,
+								"day": day
+							}
+						}, (err: any, data: any) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(data);
+							}							
+						});
 			});
 		}
 
@@ -55,7 +71,7 @@ import { mongoConnect } from './mongo-connect';
 	}
 
 	// API endpoints for games
-	app.get('/api/games/', getGames);
+	app.get('/api/games/:day/:month/:year', getGames);
 
 	app.listen(port, function () {
 		console.log(`Server started, listening on port ${port}.`);		
