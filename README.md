@@ -1,7 +1,7 @@
 # MLB-server
 [![NodeJS](https://img.shields.io/badge/Node-v10.15.3-green.svg)](https://nodejs.org/en/)
 [![Maintenance](https://img.shields.io/badge/Maintained-Yes-green.svg)](https://nodejs.org/en/)
-[![GitHub issues](https://img.shields.io/github/issues/pawptart/trivia-hero.svg)](https://GitHub.com/pawptart/MLB-server/issues/)
+[![GitHub issues](https://img.shields.io/github/issues/pawptart/MLB-server.svg)](https://GitHub.com/pawptart/MLB-server/issues/)
 
 Server for MLB API scraped up by [MLB-scraper](https://github.com/pawptart/MLB-scraper).
 
